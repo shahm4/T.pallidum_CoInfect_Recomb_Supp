@@ -15,7 +15,7 @@ Lieberman, N. et al. 2024
   4. BioSample Accession
   5. Fastq IDs
 
-**[trim_and_merge.sh](./trim_and_merged.sh)** : used to trim and merge raw fastq before converting to fasta for TP0865 recombination analysis
+**[trim_and_merge.sh](./trim_and_merge.sh)** : used to trim and merge raw fastq before converting to fasta for TP0865 recombination analysis
 
 **[recombination_analysis.R](./recombination_analysis.R)** : used to generate .csv output of variant sequence IDs using fasta files previously generated
 
@@ -30,7 +30,7 @@ The sequencing was performed using 2x151 bp reads on either the Illumina Novaseq
 3. **Deduplication**: Duplicate reads were removed using Picard MarkDuplicates.
 4. **Consensus Sequences**: The resulting consensus sequences were contextualized by incorporating them into a phylogenetic analysis of sequences from Seattle, WA, collected during 2021-22.
 
-* Refer to [Reference Files]() folder for fastas
+* Refer to [Reference Files](./Reference\Files) folder for fastas
 
 ### B. Digital droplet PCR (ddPCR)
 
