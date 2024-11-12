@@ -10,13 +10,11 @@ library(stringr)
 path <- "/Users/greningerlab03/Desktop/TP0865_all_fastq/raw_fastq/merged/fastas/" 
 fastas <- list.files("/Users/greningerlab03/Desktop/TP0865_all_fastq/raw_fastq/merged/fastas", pattern=".fasta")
 
-
 df <- as.data.frame(matrix(nrow=0, ncol=4))
 colnames(df) <- c("seq.name", "seq.text", "n", "merged_reads")
 
-
 #i <- fastas[1]
-for (i in fastas[0:length(fastas)]) { #seq243 errored for some reason, had seqeunce. But was P3 so meh. 
+for (i in fastas[0:length(fastas)]) {
   print(match(i, fastas))
   f <- phylotools::read.fasta(paste0(path, i))
   g <- f %>% group_by(seq.text) %>% summarize(n=n()) %>% arrange(desc(n))
@@ -38,8 +36,6 @@ unique_vars <- df3 %>% group_by(seq.text) %>% summarize(n_samples=n())
 unique_vars$name <- paste0("vars", str_pad(rownames(unique_vars), 4, side="left", pad=0))
 
 df4 <- left_join(unique_vars, df3)
-#remove all P3s
-#df4 <- df4 %>% filter(!str_detect(sample, "P3"))
 df4$sample <- gsub(".fasta", "", df4$sample)
 df4$sample <- gsub("_merged", "", df4$sample)
 delim <- as.data.frame(str_split_fixed(df4$sample, "_", 2))
@@ -51,6 +47,7 @@ delim2 <- as.data.frame(str_split_fixed(df4$sample, "-", 4))
 ctrl <- df4 %>% filter(str_detect(sample, "CS") | str_detect(sample, "LS"))
 biop <- df4 %>% filter(sample %!in% ctrl$sample)
 
+# P1 refers to Amplicon B and P2 refers to Amplicon A
 biop_loose_P1 <- biop %>% filter(str_detect(sample, "P1")) %>% filter(merge_strictness == "loose") %>% filter(perc >1)
 biop_loose_P2 <- biop %>% filter(str_detect(sample, "P2")) %>% filter(merge_strictness == "loose") %>% filter(perc >1)
 
@@ -58,6 +55,7 @@ dir.create("~/Desktop/sample_analysis")
 dat2fasta(data.frame(seq.name=biop_loose_P1$seq.name, seq.text=biop_loose_P1$seq.text), "~/Desktop/sample_analysis/biopsies_loose_P1.fasta")
 dat2fasta(data.frame(seq.name=biop_loose_P2$seq.name, seq.text=biop_loose_P2$seq.text), "~/Desktop/sample_analysis/biopsies_loose_P2.fasta")
 
+# P1 refers to Amplicon B and P2 refers to Amplicon A
 ctrl_loose_P1 <- ctrl %>% filter(str_detect(sample, "P1")) %>% filter(merge_strictness == "loose") %>% filter(perc >1)
 ctrl_loose_P2 <- ctrl %>% filter(str_detect(sample, "P2")) %>% filter(merge_strictness == "loose") %>% filter(perc >1)
 
