@@ -3,39 +3,52 @@ Lieberman, N. et al. 2024
 
 ## **Supplemental Data:**
 
-**TableS1.xlsx** contains the following data:
+**[TableS1.xlsx](https://github.com/shahm4/T.pallidum_CoInfect_Recomb_Supp/edit/main/README.md#:~:text=README.md-,TableS1,-.xlsx)** contains the following data:
   1. ddPCR primer/probe sequences
   2. TP0865 primer sequences
   3. TP0865 indexing sequences
 
-**BioSample_Metadata.xlsx** contains the following data:
+**[BioSample_Metadata.xlsx](https://github.com/shahm4/T.pallidum_CoInfect_Recomb_Supp/edit/main/README.md#:~:text=Reference%20Files-,BioSample_Metadata,-.xlsx)** contains the following data:
   1. Sample IDs
   2. Sample Type
   3. Amplicon Region
   4. BioSample Accession
   5. Fastq IDs
 
-**trim_and_merge.sh** : used to trim and merge raw fastq before converting to fasta for TP0865 recombination analysis
+**[trim_and_merge.sh](https://github.com/shahm4/T.pallidum_CoInfect_Recomb_Supp/edit/main/README.md#:~:text=recombination_analysis.R-,trim_and_merge,-.sh)** : used to trim and merge raw fastq before converting to fasta for TP0865 recombination analysis
 
-**recombination_analysis.R** : used to generate .csv output of variant sequence IDs using fasta files previously generated
+**[recombination_analysis.R](https://github.com/shahm4/T.pallidum_CoInfect_Recomb_Supp/edit/main/README.md#:~:text=TableS1.xlsx-,recombination_analysis,-.R)** : used to generate .csv output of variant sequence IDs using fasta files previously generated
 
 
-### **Whole Genome Sequencing (WGS)**
+## **Usage:**
+### A. Whole Genome Sequencing (WGS)
 
-Sequenced with 2x151bp reads on Illumina Novaseq 6000 or Nextseq 2000. Reads were mapped to SS14 reference NC_021508.1. 
+The sequencing was performed using 2x151 bp reads on either the Illumina Novaseq 6000 or Nextseq 2000 platforms, with the reads mapped to the SS14 reference (NC_021508.1). 
 
-Subsequent analysis was done by reprocessing _T.pallidum_ WGS reads using iterative competitive mapping with Bowtie2 to both Nichols (NC_021490.1) and SS14 (NC_021508.1) references. Variants were called with freebayes v.1.0.2 followed by deduplication with Picard MarkDuplicates, with a sequencing depth of 10. Consensus sequences contextualized by adding them to phylogeny of sequences from Seattle, WA from 2021-22.
+1. **Reprocessing**: The _T. pallidum_ whole genome sequencing (WGS) reads were reprocessed using iterative competitive mapping with Bowtie2, targeting both the Nichols (NC_021490.1) and SS14 references.
+2. **Variant Calling**: Variants were identified using FreeBayes version 1.0.2.
+3. **Deduplication**: Duplicate reads were removed using Picard MarkDuplicates, achieving a sequencing depth of 10.
+4. **Consensus Sequences**: The resulting consensus sequences were contextualized by incorporating them into a phylogenetic analysis of sequences from Seattle, WA, collected during 2021-22.
 
-* Refer to Reference Files folder for fastas
+* Refer to [Reference Files](https://github.com/shahm4/T.pallidum_CoInfect_Recomb_Supp/edit/main/README.md#:~:text=t-,Reference,-Files) folder for fastas
 
-### Digital droplet PCR (ddPCR)
+### B. Digital droplet PCR (ddPCR)
 
 _dnaA/TP0001_, _tp47/TP0574_, and _TP0136_: Discriminated between Nichols and SS14 Lineages
 
-* Refer to TableS1.xlsx for sequences
+* Refer to [TableS1.xlsx](https://github.com/shahm4/T.pallidum_CoInfect_Recomb_Supp/edit/main/README.md#:~:text=README.md-,TableS1,-.xlsx) for sequences
 
-### _TP0865_ PCR amplification
+### C. _TP0865_ PCR amplification
 
-To determine linkage between the recombinant regions in TP0865, we designed a pair of overlapping amplicons: Amplicon “A” amplifies a fragment of TP0865 that included a portion of the N-terminal “hatch” domain, the invariant ECL1, and the highly recombinant ECL2. Amplicon “B” amplifies ECL2, ECL3, and ECL4. 
+To investigate the linkage of recombinant regions in TP0865, we created two overlapping amplicons. 
 
-* Refer to file Biosample_Metadata.xlsx : Samples were labelled as P1 and P2 respectively to account for internal quality control. Amplicon B is labelled as P1 and Amplicon A is labelled as P2. 
+- **Amplicon A**: This amplicon targets a fragment of TP0865 that encompasses part of the N-terminal "hatch" domain, the invariant ECL1, and the highly recombinant ECL2.
+- **Amplicon B**: This amplicon focuses on ECL2, ECL3, and ECL4.
+
+These amplicons are designed to facilitate the analysis of the recombinant regions within TP0865.
+
+1. **Trim and Merge**: Raw fastq files were trimmed and merged using bbMerge.
+2. **Fastq to Fasta**: Converting merged fastq files to fasta.
+3. **Recombination Analysis**: Aggregate identical sequences, filter out ambiguities and low reads and subsequently calculate proportion of recombinant sequence.
+
+* Refer to file [Biosample_Metadata.xlsx](https://github.com/shahm4/T.pallidum_CoInfect_Recomb_Supp/edit/main/README.md#:~:text=Reference%20Files-,BioSample_Metadata,-.xlsx) : Amplicon B is labelled as P1 and Amplicon A is labelled as P2. 
