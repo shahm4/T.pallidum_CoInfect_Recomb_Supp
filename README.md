@@ -30,7 +30,7 @@ The sequencing was performed using 2x151 bp reads on either the Illumina Novaseq
 3. **Deduplication**: Duplicate reads were removed using Picard MarkDuplicates.
 4. **Consensus Sequences**: The resulting consensus sequences were contextualized by incorporating them into a phylogenetic analysis of sequences from Seattle, WA, collected during 2021-22.
 
-* Refer to [Reference Files](./Reference\Files) folder for fastas
+* Refer to [Reference Files](./Reference\Files/) folder for fastas
 
 ### B. Digital droplet PCR (ddPCR)
 
