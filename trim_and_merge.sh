@@ -32,8 +32,8 @@ for j in ./merged/*.fastq.gz; do
     # Extract the base name from the merged FASTQ file
     base2=$(basename "$j" .fastq.gz)
     
-    # Convert FASTQ to FASTA using seqtk
-    seqtk seq -A "$j" > "./merged/fastas/${base2}.fasta"
+    # Convert FASTQ to FASTA using any2fasta
+    any2fasta "$j" > "./merged/fastas/${base2}.fasta"
     
     # Check if conversion was successful
     if [[ $? -ne 0 ]]; then
