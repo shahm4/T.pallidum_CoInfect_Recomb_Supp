@@ -13,6 +13,10 @@ Subsequent analysis was done by reprocessing _T.pallidum_ WGS reads using iterat
 
 _dnaA/TP0001_, _tp47/TP0574_, and _TP0136_: Discriminated between Nichols and SS14 Lineages
 
+* Refer to TableS1.xlsx for sequences
+
 # _TP0865_ PCR amplification
 
 To determine linkage between the recombinant regions in TP0865, we designed a pair of overlapping amplicons: Amplicon “A” amplifies a fragment of TP0865 that included a portion of the N-terminal “hatch” domain, the invariant ECL1, and the highly recombinant ECL2. Amplicon “B” amplifies ECL2, ECL3, and ECL4. 
+
+* Refer to file Biosample_Metadata.xlsx : Samples were labelled as P1 and P2 respectively to account for internal quality control. Amplicon B is labelled as P1 and Amplicon A is labelled as P2. 
