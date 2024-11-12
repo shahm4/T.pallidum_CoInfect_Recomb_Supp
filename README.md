@@ -1,5 +1,5 @@
 # Disseminated syphilis with concurrent infection by and recombination between two _Treponema pallidum_ strains
-Lieberman et al. 2024
+Lieberman, N. et al. 2024
 
 # **Supplemental Data:**
 
